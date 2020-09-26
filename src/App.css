@@ -1,0 +1,32 @@
+/* GLOBAL STYLES */
+
+:root {
+  --ff-primary: "Peddana", serif;
+  --ff-secondary: "Rancho", cursive;
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
+  --fs-body: 1rem;
+
+  --clr-light: #f3f3f3;
+  --clr-dark: #000;
+  --clr-magenta: #bf0449;
+  --clr-violet: #583f8c;
+  --clr-skyblue: #05c7f2;
+  --clr-teal: #03a6a6;
+  --clr-gold: #f2d98d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+}
