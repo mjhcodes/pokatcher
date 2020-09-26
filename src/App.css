@@ -30,3 +30,16 @@ body {
   background-color: var(--clr-light);
   color: var(--clr-dark);
 }
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  color: var(--clr-light);
+  font-family: var(--ff-secondary);
+  font-size: var(--fs-h1);
+  background-color: var(--clr-violet);
+}
