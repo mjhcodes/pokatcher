@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { fetchPokemons } from "../services/fetchData";
 import Button from "../components/Button";
 import Thumbnail from "../components/Thumbnail";
-import Loading from "../components/Loading";
+import LoadingImages from "../components/LoadingImages";
 
 const mapIdxToColorTable = {
   0: "#bf0449",
@@ -42,7 +42,7 @@ const Pokemon = () => {
             );
           })
         ) : (
-          <Loading />
+          <LoadingImages />
         )}
       </section>
 
