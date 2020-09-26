@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./parts/Header";
-import Home from "./components/Home";
-import Pokemon from "./components/Pokemon";
-import Catch from "./components/Catch";
+import Home from "./pages/Home";
+import Pokemon from "./pages/Pokemon";
+import Catch from "./pages/Catch";
 import "./App.css";
 
 function App() {
