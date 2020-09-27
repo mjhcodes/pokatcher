@@ -12,7 +12,8 @@
   --fs-mobile-h1: 1.5rem;
   --fs-mobile-h2: 1.25rem;
 
-  --fs-xl: 4.5rem;
+  --fs-xxl: 4.5rem;
+  --fs-xl: 3.5rem;
   --fs-l: 2rem;
   --fs-m: 1.5rem;
 
@@ -100,9 +101,36 @@ h2 {
 /* COMPONENTS */
 
 .loading-images {
+  position: relative;
   font-size: var(--fs-h1);
   font-family: var(--ff-secondary);
   color: var(--clr-teal);
+  animation-name: loading;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  0% {
+    color: var(--clr-violet);
+    left: -150px;
+  }
+  25% {
+    color: var(--clr-skyblue);
+    left: 0px;
+  }
+  50% {
+    color: var(--clr-magenta);
+    left: 150;
+  }
+  75% {
+    color: var(--clr-teal);
+    left: 0px;
+  }
+  100% {
+    color: var(--clr-gold);
+    left: -150px;
+  }
 }
 
 .card {
@@ -140,6 +168,21 @@ h2 {
   background-color: var(--clr-skyblue);
   height: 42px;
   width: 100%;
+}
+
+.modal__title {
+  margin-bottom: 1rem;
+  font-size: var(--fs-xl);
+  font-family: var(--ff-secondary);
+  color: var(--clr-skyblue);
+}
+
+.modal__subtitle {
+  font-size: var(--fs-l);
+}
+
+.modal__label {
+  font-size: 22px;
 }
 
 /* HEADER */
@@ -217,6 +260,23 @@ h2 {
   filter: drop-shadow(5px 5px 5px rgba(88, 63, 140, 0.25));
 }
 
+.catch__thumbnail:focus,
+.catch__thumbnail:hover {
+  filter: drop-shadow(5px 5px 5px rgba(88, 63, 140, 0.95));
+  transform: scale(1.05);
+  outline: none;
+}
+
+.catch__thumbnail-active {
+  border-radius: 50%;
+  box-shadow: 0 0 1 5px var(--clr-dark);
+  outline: none;
+}
+
+.catch__thumbnail-active img {
+  border-radius: 50%;
+}
+
 .catch__thumbnail img {
   display: block;
   width: 100px;
@@ -255,16 +315,6 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
-@media (min-width: 600px) {
-  .pokemon__back {
-    display: flex;
-    color: var(--clr-dark);
-    font-size: var(--fs-m);
-    letter-spacing: 0.8px;
-    margin-bottom: 0;
-  }
-}
-
 .pokemon__back p {
   margin-top: 1px;
 }
@@ -287,11 +337,25 @@ h2 {
 }
 
 .pokemon__name {
-  font-size: var(--fs-xl);
+  font-size: var(--fs-xxl);
   color: var(--clr-magenta);
   line-height: 60px;
 }
 
 .pokemon__details {
   font-size: var(--fs-l);
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .pokemon__back {
+    display: flex;
+    color: var(--clr-dark);
+    font-size: var(--fs-m);
+    letter-spacing: 0.8px;
+    margin-bottom: 0;
+  }
+  .pokemon__details {
+    text-align: left;
+  }
 }
