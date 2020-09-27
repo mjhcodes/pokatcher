@@ -5,9 +5,15 @@ import { placeholder } from "../assets/placeholder";
 import Hero from "../components/Hero";
 
 const Pokemon = () => {
-  const selected = localStorage.getItem("selected")
-    ? JSON.parse(localStorage.getItem("selected"))
+  let featured_pokemon = localStorage.getItem("featured_pokemon");
+  featured_pokemon = featured_pokemon
+    ? JSON.parse(featured_pokemon)
     : placeholder;
+
+  const types = featured_pokemon.types.map((type) => type.type.name);
+  const abilities = featured_pokemon.abilities.map(
+    (ability) => ability.ability.name
+  );
 
   return (
     <article className="two-columns">
@@ -16,18 +22,18 @@ const Pokemon = () => {
           <NavigateBeforeOutlinedIcon />
           <p>Return to Collection</p>
         </Link>
-        <Hero img={selected.img} />
+        <Hero img={featured_pokemon.sprites.front_default} />
       </section>
 
       <section className="column mobile-centered pokemon__details-section">
-        <h1 className="pokemon__name">{selected.name}</h1>
-        {selected.id && (
+        <h1 className="pokemon__name">{featured_pokemon.name}</h1>
+        {featured_pokemon.id && (
           <Fragment>
             <p className="pokemon__details">
-              <strong>Types:</strong> {selected.types.join(", ")}
+              <strong>Types:</strong> {types.join(", ")}
             </p>
             <p className="pokemon__details">
-              <strong>Abilities:</strong> {selected.abilities.join(", ")}
+              <strong>Abilities:</strong> {abilities.join(", ")}
             </p>
           </Fragment>
         )}
