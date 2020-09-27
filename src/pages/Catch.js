@@ -35,8 +35,8 @@ const Pokemon = () => {
           pokemons.map((pokemon, idx) => {
             return (
               <Thumbnail
-                key={`pokemon_${idx}`}
-                url={pokemon.url}
+                key={`pokemon_thumbnail_${idx}`}
+                url={require("../assets/images/pikachu-outline.jpeg")}
                 color={mapIdxToColorTable[idx % 3]}
               />
             );
