@@ -82,6 +82,11 @@ h2 {
   background-color: var(--clr-violet);
 }
 
+.header a {
+  color: var(--clr-light);
+  text-decoration: none;
+}
+
 /* HOME PAGE */
 
 .home__title,
