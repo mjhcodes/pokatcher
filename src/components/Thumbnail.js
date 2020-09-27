@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Thumbnail = ({ url, color }) => (
   <button className="catch__thumbnail" style={{ border: `4px solid ${color}` }}>
-    <img src={url} alt="Preview of a random Pokemon character" />
+    <img src={url} alt="Random Pokemon character" />
   </button>
 );
 
