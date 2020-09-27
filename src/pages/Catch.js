@@ -1,23 +1,43 @@
-import React, { useEffect } from "react";
-import { fetchPokemons } from "../services/fetchData";
-import Button from "../components/Button";
+import React, { useState, useEffect } from "react";
+import { getRandomPokemons } from "../services/fetchData";
+import { isObjEmpty } from "../utils/util";
 import Thumbnail from "../components/Thumbnail";
 import LoadingImages from "../components/LoadingImages";
+import NameModal from "../components/NameModal";
+import Button from "../components/Button";
 
-const mapIdxToColorTable = {
+const mapIdxToColor = {
   0: "#bf0449",
   1: "#03a6a6",
   2: "#f2d98d",
 };
 
-const Pokemon = () => {
-  useEffect(() => {
-    fetchPokemons();
-  }, []);
+const Catch = () => {
+  const [pokemons, setPokemons] = useState([]);
+  const [caughtPokemon, setCaughtPokemon] = useState({});
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const pokemons = localStorage.getItem("pokemons")
-    ? JSON.parse(localStorage.getItem("pokemons"))
+  const my_collection = localStorage.getItem("my_collection")
+    ? JSON.parse(localStorage.getItem("my_collection"))
     : [];
+
+  useEffect(() => {
+    getRandomPokemons();
+    if (pokemons.length === 0 || !pokemons) {
+      const isLoaded = localStorage.getItem("random_pokemons");
+      setPokemons(
+        isLoaded ? JSON.parse(localStorage.getItem("random_pokemons")) : []
+      );
+    }
+  }, [pokemons]);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   return (
     <article>
@@ -31,26 +51,42 @@ const Pokemon = () => {
       </header>
 
       <section className="catch__pokemons">
-        {pokemons ? (
+        {pokemons.length === 0 || !pokemons ? (
+          <LoadingImages />
+        ) : (
           pokemons.map((pokemon, idx) => {
             return (
               <Thumbnail
                 key={`pokemon_thumbnail_${idx}`}
-                url={require("../assets/images/pikachu-outline.jpeg")}
-                color={mapIdxToColorTable[idx % 3]}
+                selected={caughtPokemon.name === pokemon.name}
+                pokemon={pokemon}
+                setCaughtPokemon={setCaughtPokemon}
+                color={mapIdxToColor[idx % 3]}
               />
             );
           })
-        ) : (
-          <LoadingImages />
         )}
       </section>
 
       <section>
-        <Button to="/pokemon/1" label="SUBMIT" />
+        <span style={{ cursor: "not-allowed" }}>
+          <Button
+            onClick={handleModalOpen}
+            disabled={isObjEmpty(caughtPokemon)}
+            label="CONFIRM CATCH"
+            to="#"
+          />
+        </span>
+
+        <NameModal
+          isModalOpen={isModalOpen}
+          handleModalClose={handleModalClose}
+          my_collection={my_collection}
+          caughtPokemon={caughtPokemon}
+        />
       </section>
     </article>
   );
 };
 
-export default Pokemon;
+export default Catch;
