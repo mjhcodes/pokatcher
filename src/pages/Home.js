@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
-import { setRandomOffset } from "../services/fetchData";
+import { setRandomIdArray } from "../services/fetchData";
 import { placeholder } from "../assets/placeholder";
 import Button from "../components/Button";
 import Card from "../components/Card";
 
 const Home = () => {
   useEffect(() => {
-    setRandomOffset();
+    setRandomIdArray();
   }, []);
 
-  const isCollection = localStorage.getItem("collection");
+  const isCollectionLoaded = localStorage.getItem("my_collection");
 
-  const collection = isCollection
-    ? localStorage.getItem("collection")
+  const my_collection = isCollectionLoaded
+    ? JSON.parse(localStorage.getItem("my_collection"))
     : [placeholder];
 
-  const collectionLength = isCollection ? collection.length : 0;
+  const collectionLength = isCollectionLoaded ? my_collection.length : 0;
 
   return (
     <article>
@@ -27,7 +27,7 @@ const Home = () => {
 
       <section className="column centered">
         <h2 className="home__collection-title">MY COLLECTION</h2>
-        {collection.map((pokemon, idx) => (
+        {my_collection.map((pokemon, idx) => (
           <Card key={`pokemon_card_${idx}`} pokemon={pokemon} />
         ))}
         <p className="home__collection-count">

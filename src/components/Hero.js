@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Hero = ({ img }) => (
   <div className="pokemon__hero">
-    <img src={img} alt="Selected Pokemon character" />
+    <img src={img} alt="Featured Pokemon character" />
   </div>
 );
 
