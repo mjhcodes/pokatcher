@@ -7,9 +7,11 @@ const Button = (props) => {
   const { button } = useStyles();
   return (
     <MUButton
-      component={Link}
+      onClick={props.onClick}
+      disabled={props.disabled}
       to={props.to}
       className={button}
+      component={Link}
       variant="contained"
       color="secondary"
     >
