@@ -1,30 +1,47 @@
-// gets total pokemon count from api;
-// determines random offset, then stores it in local storage
-export async function setRandomOffset() {
-  const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1");
-  res
-    .json()
-    .then((res) =>
-      localStorage.setItem(
-        "random_offset",
-        Math.floor(Math.random() * res.count - 10)
-      )
-    )
-    .catch((err) => localStorage.setItem("errors_offset", err));
+import axios from "axios";
+
+// based on total pokemon count, gets a random number and fills new array * 10 -
+// will later be used to map incrementely for individual api calls
+export async function setRandomIdArray() {
+  const apiURL = "https://pokeapi.co/api/v2/pokemon?limit=1";
+  await axios
+    .get(apiURL)
+    .then((res) => {
+      // subtracts ten to ensure later api calls don't exceed total
+      const random_id = Math.floor(Math.random() * (res.data.count - 10));
+      const random_id_array = new Array(10).fill(random_id);
+      localStorage.setItem("random_id_array", random_id_array);
+    })
+    .catch((err) => localStorage.setItem("errors", err));
 }
 
-export async function fetchPokemons() {
-  // if no offset in storage, sets offset at random number between 1-100
-  const offset = localStorage.getItem("random_offset")
-    ? localStorage.getItem("random_offset")
-    : Math.floor(Math.random() * 100);
-  const res = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=10`
-  );
-  res
-    .json()
-    .then((res) =>
-      localStorage.setItem("pokemons", JSON.stringify(res.results))
-    )
-    .catch((err) => localStorage.setItem("errors_fetch", err));
+// based on id array, fetches ten separate Pokemon
+// and sets as a new array into local storage
+export async function getRandomPokemons() {
+  const random_pokemons = [];
+
+  let idArray = localStorage.getItem("random_id_array");
+  idArray = idArray
+    ? idArray.split(",").map((n, i) => parseInt(n) + i)
+    : new Array(10).fill(1).map((n) => n * Math.ceil(Math.random() * 100));
+
+  await axios
+    .all([
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[0]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[1]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[2]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[3]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[4]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[5]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[6]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[7]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[8]}`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${idArray[9]}`),
+    ])
+    .then((res) => {
+      res.forEach((data) => random_pokemons.push(data.data));
+    })
+    .catch((err) => localStorage.setItem("errors", err));
+
+  localStorage.setItem("random_pokemons", JSON.stringify(random_pokemons));
 }
