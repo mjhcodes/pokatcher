@@ -22,14 +22,8 @@ const Catch = () => {
     : [];
 
   useEffect(() => {
-    getRandomPokemons();
-    if (pokemons.length === 0 || !pokemons) {
-      const isLoaded = localStorage.getItem("random_pokemons");
-      setPokemons(
-        isLoaded ? JSON.parse(localStorage.getItem("random_pokemons")) : []
-      );
-    }
-  }, [pokemons]);
+    getRandomPokemons(setPokemons);
+  }, []);
 
   const handleModalOpen = () => {
     setModalOpen(true);

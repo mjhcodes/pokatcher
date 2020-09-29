@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@material-ui/lab";
-import { setRandomIdArray } from "../services/fetchData";
 import { placeholder } from "../assets/placeholder";
 import Button from "../components/Button";
 import Card from "../components/Card";
@@ -26,7 +25,6 @@ const Home = () => {
       : 1;
 
   useEffect(() => {
-    setRandomIdArray();
     setActivePokemon(pendingPokemon);
   }, []);
 
