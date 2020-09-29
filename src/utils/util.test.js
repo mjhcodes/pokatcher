@@ -8,7 +8,7 @@ test("accepts object; returns true if no keys and false if keys exist", () => {
   ).toBe(false);
 });
 
-test("accepts a maximum number; returns array of 10 different numbers, each > 0 and < the maximum number", () => {
+test("accepts a maximum number; returns array of 10 different numbers; 0 < num < max", () => {
   expect(getRandomNumArray(807)).toHaveLength(10);
   expect(getRandomNumArray(807).every((n) => n > 0)).toBe(true);
   expect(getRandomNumArray(807).every((n) => n <= 807)).toBe(true);
