@@ -11,6 +11,11 @@
 ## Description:
 Pokatchér is a web application which allows users to catch and name over 800 different Pokémon.
 
+## View Live
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4b24c0ae-e6ff-4984-a2a9-8962b0721d3c/deploy-status)](https://app.netlify.com/sites/pokatcher/deploys)
+
+**Website:** *https://pokatcher.netlify.app/*
+
 ## Installation Steps:
 - First, clone the repo from *https://github.com/mjhughes707/pokatcher.git*
 - Run `cd pokatcher` to move into the app folder
