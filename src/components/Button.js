@@ -1,23 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { Button as MUButton } from "@material-ui/core";
 import { useStyles } from "../assets/styles";
 
-const Button = (props) => {
+const Button = ({ id, onClick, disabled, to, label }) => {
   const { button } = useStyles();
   return (
     <MUButton
-      onClick={props.onClick}
-      disabled={props.disabled}
-      to={props.to}
+      id={id}
+      onClick={onClick}
+      disabled={disabled}
+      to={to}
       className={button}
       component={Link}
       variant="contained"
       color="secondary"
     >
-      {props.label}
+      {label}
     </MUButton>
   );
+};
+
+Button.propTypes = {
+  id: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool.isRequired,
+  to: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default Button;

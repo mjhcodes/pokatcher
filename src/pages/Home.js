@@ -69,7 +69,7 @@ const Home = () => {
       </section>
 
       <section>
-        <Button to="/catch" label="CATCH POKÉMON" />
+        <Button disabled={false} to="/catch" label="CATCH POKÉMON" />
       </section>
     </article>
   );
