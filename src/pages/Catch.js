@@ -36,6 +36,10 @@ const Catch = () => {
     setModalOpen(false);
   };
 
+  const focusOnConfirm = () => {
+    document.getElementById("confirm-catch").focus();
+  };
+
   const isPokemonsLoaded = pokemons.length !== 0 && pokemons;
 
   return (
@@ -62,6 +66,7 @@ const Catch = () => {
                 selected={caughtPokemon.name === pokemon.name}
                 pokemon={pokemon}
                 setCaughtPokemon={setCaughtPokemon}
+                focusOnConfirm={focusOnConfirm}
                 color={mapIdxToColor[idx % 3]}
               />
             );
@@ -75,6 +80,7 @@ const Catch = () => {
         {isPokemonsLoaded && (
           <span style={{ cursor: "not-allowed" }}>
             <Button
+              id="confirm-catch"
               onClick={handleModalOpen}
               disabled={isObjEmpty(caughtPokemon)}
               label="CONFIRM CATCH"

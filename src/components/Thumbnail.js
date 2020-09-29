@@ -1,10 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Thumbnail = ({ selected, pokemon, setCaughtPokemon, url, color }) => {
+const Thumbnail = ({
+  selected,
+  pokemon,
+  setCaughtPokemon,
+  focusOnConfirm,
+  color,
+}) => {
   return (
     <button
-      onClick={() => setCaughtPokemon(pokemon)}
+      onClick={() => {
+        setCaughtPokemon(pokemon);
+        focusOnConfirm();
+      }}
       className={
         selected
           ? "catch__thumbnail catch__thumbnail-active"

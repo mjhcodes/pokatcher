@@ -27,6 +27,12 @@ const NameModal = ({
     );
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && name) {
+      document.getElementById("submit-button").click();
+    }
+  };
+
   return (
     <Modal
       aria-labelledby="modal-title"
@@ -55,14 +61,17 @@ const NameModal = ({
             </label>
 
             <Input
-              required
               id="new-name"
               className={input}
+              autoFocus
+              required
               value={name}
               onChange={(e) => setName(e.target.value)}
+              onKeyPress={(e) => handleKeyPress(e)}
             />
 
             <Button
+              id="submit-button"
               to={`/pokemon/${caughtPokemon.id}`}
               label="SUBMIT"
               disabled={!name}
