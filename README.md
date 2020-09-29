@@ -21,11 +21,11 @@ Pokatchér is a web application which allows users to catch and name over 800 di
 ## How to Use the App:
 - When the app is loaded for the very 1st time, there will be not be any Pokémon in your collection.
 - Click the ***Catch Pokémon*** button to get started.
-- Once loaded, there will be images of 10 random Pokémon displayed. Click one to active the ***Confirm Catch*** button.
-- Click the ***Confirm Catch*** button to display a modal, which includes a success message and the Pokémon's type(s).
+- Once loaded, there will be images of 10 random Pokémon displayed. Click one to activate the ***Confirm Catch*** button.
+- Click the ***Confirm Catch*** button to display a modal, which includes a success message, the Pokémon's type(s) and text field to give it a new name.
 - In the modal, type a new name for the Pokémon, then click the ***Submit*** button to confirm.
 - This will direct you to a featured page for that specific Pokémon, which displays their new name, image, types(s) and abilities. A link is also included to return to the home page / collection.
-- Back at the home page, you may paginate through all of the caught Pokémons in your collection and view their details by clicking their image.
+- Back at the home page, you may paginate through all of the caught Pokémons in your collection, as well as view their details by clicking their image.
 - To repeat the process and add more Pokémon to your collection, simply click the ***Catch Pokémon*** button and start again!
 - *At any point, feel free to click the <strong>Pokatchér</strong> title in the header to return to the home page.*
 - *The app can also be fully navigated with a keyboard only.*
