@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { FormControl, Input, Modal, Backdrop, Fade } from "@material-ui/core";
 import { useStyles } from "../assets/styles";
-import { isObjEmpty } from "../utils/util";
+import { isObjEmpty, getArticle } from "../utils/util";
 import Button from "./Button";
 
 const NameModal = ({
@@ -46,12 +46,14 @@ const NameModal = ({
             AWESOME!
           </h2>
           <p id="modal-subtitle" className="modal__subtitle">
-            {!isObjEmpty(caughtPokemon) && `You caught ${types.join(" / ")}!`}
+            {!isObjEmpty(caughtPokemon) &&
+              `You caught ${getArticle(types[0])} ${types.join(" / ")}!`}
           </p>
           <FormControl className={form} noValidate autoComplete="off">
             <label htmlFor="new-name" className="modal__label">
               Now let's give it a name!
             </label>
+
             <Input
               required
               id="new-name"
@@ -59,6 +61,7 @@ const NameModal = ({
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+
             <Button
               to={`/pokemon/${caughtPokemon.id}`}
               label="SUBMIT"
