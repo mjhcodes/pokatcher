@@ -1,5 +1,5 @@
 # Pokatchér
-<strong>The Placé to Katch Pokémon!</strong>
+<strong>The placé to katch Pokémon!</strong>
 
 ## Table of Contents
 * [Description](#description)
@@ -51,4 +51,6 @@ This project has been created with:
 - **React Router:** *https://reactrouter.com/*
 - **Material-UI:** *https://material-ui.com/*
 - **Jest:** *https://jestjs.io/*
+- **Enzyme:** *https://enzymejs.github.io/enzyme/*
+- **Axios:** *https://github.com/axios/axios*
 - **PokéAPI:** *https://pokeapi.co/*
