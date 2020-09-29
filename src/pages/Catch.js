@@ -14,15 +14,18 @@ const mapIdxToColor = {
 
 const Catch = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [error, setErrors] = useState(false);
   const [caughtPokemon, setCaughtPokemon] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
+
+  if (error) alert(`${error.message}. Please try again later.`);
 
   const my_collection = localStorage.getItem("my_collection")
     ? JSON.parse(localStorage.getItem("my_collection"))
     : [];
 
   useEffect(() => {
-    getRandomPokemons(setPokemons);
+    getRandomPokemons(setPokemons, setErrors);
   }, []);
 
   const handleModalOpen = () => {

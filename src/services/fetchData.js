@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getRandomNumArray } from "../utils/util";
 
-export async function getRandomPokemons(setPokemons) {
+export async function getRandomPokemons(setPokemons, setErrors) {
   const API_DATA_COUNT = 807; // max available pokemons to be called from pokeapi.co
   const idArray = getRandomNumArray(API_DATA_COUNT);
   const random_pokemons = [];
@@ -22,7 +22,7 @@ export async function getRandomPokemons(setPokemons) {
     .then((res) => {
       res.forEach((data) => random_pokemons.push(data.data));
     })
-    .catch((err) => localStorage.setItem("errors", err));
+    .catch((err) => setErrors(err));
 
   setPokemons(random_pokemons);
 }
