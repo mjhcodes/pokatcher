@@ -109,35 +109,37 @@ a {
 /* loading */
 
 .loading-images {
+  margin-top: 10rem;
   position: relative;
   font-size: var(--fs-h1);
   font-family: var(--ff-secondary);
   color: var(--clr-teal);
   animation-name: loading;
-  animation-duration: 12s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 
 @keyframes loading {
   0% {
     color: var(--clr-violet);
-    left: -150px;
   }
   25% {
     color: var(--clr-skyblue);
-    left: 0px;
   }
   50% {
     color: var(--clr-magenta);
-    left: 150;
   }
   75% {
     color: var(--clr-teal);
-    left: 0px;
   }
   100% {
     color: var(--clr-gold);
-    left: -150px;
+  }
+}
+
+@media (min-width: 600px) {
+  .loading-images {
+    font-size: var(--fs-xxl);
   }
 }
 

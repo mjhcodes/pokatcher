@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { getRandomPokemons } from "../services/fetchData";
 import { isObjEmpty } from "../utils/util";
 import Thumbnail from "../components/Thumbnail";
@@ -33,21 +33,25 @@ const Catch = () => {
     setModalOpen(false);
   };
 
+  const isPokemonsLoaded = pokemons.length !== 0 && pokemons;
+
   return (
     <article>
       <header>
-        <h1 className="catch__title">
-          We've stumbled upon ten Pokemon in the wild!
-        </h1>
-        <h2 className="catch__subtitle">
-          Quick! Click on one to catch it before they disappear!
-        </h2>
+        {isPokemonsLoaded && (
+          <Fragment>
+            <h1 className="catch__title">
+              We've stumbled upon ten Pokemon in the wild!
+            </h1>
+            <h2 className="catch__subtitle">
+              Quick! Click on one to catch it before they disappear!
+            </h2>
+          </Fragment>
+        )}
       </header>
 
       <section className="catch__pokemons">
-        {pokemons.length === 0 || !pokemons ? (
-          <LoadingImages />
-        ) : (
+        {isPokemonsLoaded ? (
           pokemons.map((pokemon, idx) => {
             return (
               <Thumbnail
@@ -59,18 +63,22 @@ const Catch = () => {
               />
             );
           })
+        ) : (
+          <LoadingImages />
         )}
       </section>
 
       <section>
-        <span style={{ cursor: "not-allowed" }}>
-          <Button
-            onClick={handleModalOpen}
-            disabled={isObjEmpty(caughtPokemon)}
-            label="CONFIRM CATCH"
-            to="#"
-          />
-        </span>
+        {isPokemonsLoaded && (
+          <span style={{ cursor: "not-allowed" }}>
+            <Button
+              onClick={handleModalOpen}
+              disabled={isObjEmpty(caughtPokemon)}
+              label="CONFIRM CATCH"
+              to="#"
+            />
+          </span>
+        )}
 
         <NameModal
           isModalOpen={isModalOpen}
