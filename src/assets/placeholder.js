@@ -1,7 +1,7 @@
 export const placeholder = {
   id: null,
   sprites: {
-    front_default: `${process.env.PUBLIC_URL}/pikachu-outline.jpeg`,
+    front_default: "/pikachu-outline.jpeg",
   },
   name: "???",
   types: [{ type: { type: { name: "" } } }],
