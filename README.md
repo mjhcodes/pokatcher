@@ -3,6 +3,7 @@
 
 ## Table of Contents
 * [Description](#description)
+* [View Live](#view-live)
 * [Installation Steps](#installation-steps)
 * [How to Use the App](#how-to-use-the-app)
 * [Examples](#examples)
